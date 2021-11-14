@@ -43,8 +43,6 @@ public class PlayerController : MonoBehaviour
         moveInput.x = float.Parse(serialData[0]);
         moveInput.y = float.Parse(serialData[1]);
         moveInput.Normalize();
-        Debug.Log(moveInput.x);
-        Debug.Log(moveInput.y);
         rb.velocity = new Vector3(moveInput.x * moveSpeed, rb.velocity.y, moveInput.y * moveSpeed);
     }
 
@@ -64,6 +62,22 @@ public class PlayerController : MonoBehaviour
             if(serialData[3] == "1"){
                 SceneManager.LoadScene(1);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "CharacterHome")
+        {
+            other.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject.tag == "CharacterHome")
+        {
+            other.gameObject.transform.parent.gameObject.transform.GetChild(1).gameObject.SetActive(false);
         }
     }
 }
