@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
 
 
-    //SerialPort data_stream = new SerialPort("COM3", 19200); //PC
-    SerialPort data_stream = new SerialPort("/dev/cu.usbmodem14401", 19200); //MAC
+    SerialPort data_stream = new SerialPort("COM3", 19200); //PC
+    //SerialPort data_stream = new SerialPort("/dev/cu.usbmodem14401", 19200); //MAC
 
     public string receivedstring;
     public string[] serialData;
